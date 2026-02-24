@@ -57,3 +57,43 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+---
+
+## Local Development Setup
+
+### Database Setup
+
+1. Log in to MySQL:
+   ```bash
+   mysql -u root
+   ```
+
+2. Create the database:
+   ```sql
+   CREATE DATABASE cavelli_atelier;
+   ```
+
+3. Verify it was created:
+   ```sql
+   SHOW DATABASES;
+   ```
+
+### Environment Configuration
+
+Update your `.env` file with these database settings:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=cavelli_atelier
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### Run Migrations
+
+```bash
+php artisan migrate
+```
