@@ -18,25 +18,25 @@
             </div>
             <div>
                 <p>Product ID</p>
-                <h3>{{ str_pad($product->id, 6, '0', STR_PAD_LEFT) }}</h3>
+                <p>{{ str_pad($product->id, 6, '0', STR_PAD_LEFT) }}</h3>
             </div>
             <div>
                 <p>Price</p>
-                <h3>{{ number_format($product->price, 2) }}kr</h3>
+                <p>{{ number_format($product->price, 2) }}kr</h3>
             </div>
         </div>
         <div>
             <div>
                 <p>Material</p>
-                <h3>{{ $product->material ?? 'N/A' }}</h3>
+                <p>{{ $product->material ?? 'N/A' }}</h3>
             </div>
             <div>
                 <p>Dimentions (H x W)</p>
-                <h3>{{ $product->dimentions ?? 'N/A' }}</h3>
+                <p>{{ $product->dimentions ?? 'N/A' }}</h3>
             </div>
             <div>
                 <p>Product Type</p>
-                <h3>{{ $product->productType->name }}</h3>
+                <p>{{ $product->productType->name }}</h3>
             </div>
         </div>
         <div>

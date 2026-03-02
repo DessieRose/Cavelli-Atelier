@@ -27,7 +27,7 @@
             <div>
                 <div>
                     <span>
-                        <i>search icon</i>
+                        <i class="fa fa-search"></i>
                     </span>
                     <input type="text" name="search" placeholder="Search" />
                 </div>
@@ -38,7 +38,7 @@
                         <option value="inactive">Inactive only</option>
                     </select>
                     <div>
-                        <i>arrow icon</i>
+                        <i class="fa fa-chevron-down"></i>
                     </div>
                 </div>
                 <div>
@@ -48,17 +48,17 @@
                         <option value="oldest">Oldest First</option>
                     </select>
                     <div>
-                        <i>arrow icon</i>
+                        <i class="fa fa-chevron-down"></i>
                     </div>
                 </div>
 
                 <a href="{{ route('products.create') }}">
-                    <span>+</span> Add new product
+                    <span class="text-xl">+</span> Add new product
                 </a>
                 <hr>
             </div>
             <div>
-                <label>Product type</label>
+                <label class="font-bold">Product type</label>
                 <div>
                     <select name="type">
                         <option>Show: All products</option>
@@ -67,11 +67,11 @@
                         @endforeach
                     </select>
                     <div>
-                        <i>arrow icon</i>
+                        <i class="fa fa-chevron-down"></i>
                     </div>
                 </div>
 
-                <label>Price</label>
+                <label class="font-bold">Price</label>
                 <div>
                     <select name="price">
                         <option>Show by: Defaulf</option>
@@ -79,11 +79,11 @@
                         <option value="high">High to Low</option>
                     </select>
                     <div>
-                        <i>arrow icon</i>
+                        <i class="fa fa-chevron-down"></i>
                     </div>
                 </div>
 
-                <label>Material</label>
+                <label class="font-bold">Material</label>
                 <div>
                     <select name="material">
                         <option>Show by: Defaulf</option>
@@ -92,12 +92,12 @@
                         @endforeach
                     </select>
                     <div>
-                        <i>arrow icon</i>
+                        <i class="fa fa-chevron-down"></i>
                 </div>
             </div>
             </form>
     </section>
-    
+
     <section>
         @forelse ($products as $product)
             <x-product-card :product="$product" />
