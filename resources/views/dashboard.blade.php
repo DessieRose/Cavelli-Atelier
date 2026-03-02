@@ -3,13 +3,19 @@
 @section('title', 'Login - Cavelli Atelier')
 
 @section('content')
-    <div>
+    <div class="min-h-screen flex items-center justify-center gap-4 flex-col">
         @include('errors')
     
-        <p>Hello, {{ auth()->user()->name }}!</p>
-        <a href="/logout">Logout</a>
+        <h2>Hello, {{ auth()->user()->name }}!</h2>
+        <div class="items-center bg-gray-100 border border-gray-300 rounded-lg p-4">
+            <a href="/logout">Logout</a>
+
+        </div>
     
-        <a href="/products">products page</a>
+        <div class="items-center bg-gray-100 border border-gray-300 rounded-lg p-4">
+            <a href="/products">products page</a>
+
+        </div>
 
     </div>
 

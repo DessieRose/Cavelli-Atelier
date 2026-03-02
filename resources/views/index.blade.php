@@ -24,7 +24,7 @@
                         <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
                         <input name="password" id="password" type="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     </div>
-                    <button type="submit" class="w-full bg-green-400 text-white font-medium py-2 rounded-lg hover:bg-green-700 transition-colors">Login</button>
+                    <button type="submit" class="w-full bg-[#8eb88e] hover:bg-[#7a9e7a] text-white font-medium py-2 rounded-lg transition-colors">Login</button>
                 </form>
             </div>
         </div>
