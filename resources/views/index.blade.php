@@ -1,14 +1,33 @@
-@include('errors')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Cavelli Atelier</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="w-full max-w-md">
+            <div class="bg-white rounded-lg shadow-md p-8">
+                <h1 class="text-2xl font-bold mb-6 text-gray-900">Login</h1>
+                
+                @include('errors')
 
-<form method="post" action="/login">
-    @csrf
-    <div>
-        <label for="email">Email</label>
-        <input name="email" id="email" type="email" />
+                <form method="post" action="/login" class="space-y-4">
+                    @csrf
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                        <input name="email" id="email" type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                        <input name="password" id="password" type="password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
+                    <button type="submit" class="w-full bg-green-400 text-white font-medium py-2 rounded-lg hover:bg-green-700 transition-colors">Login</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <div>
-        <label for="password">Password</label>
-        <input name="password" id="password" type="password" />
-    </div>
-    <button type="submit">Login</button>
-</form>
+</body>
+</html>
