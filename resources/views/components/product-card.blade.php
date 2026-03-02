@@ -1,6 +1,6 @@
-@props(['product']);
+@props(['product'])
 
-<div class="flex item-center border border-gray-200 rounded-2xl">
+<div class="items-center bg-gray-100 border border-gray-300 rounded-lg p-4 m-10 overflow-hidden">
     <div class="flex items-center gap-4">
         <input type="checkbox" name="select_products[]" value="{{ $product->id }}" class="rounded border-gray-300"/>
         <div>
