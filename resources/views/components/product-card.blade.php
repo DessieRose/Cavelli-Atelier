@@ -17,8 +17,8 @@
                 <h3>{{ $product->name }}</h3>
             </div>
             <div>
-                <p>Item ID</p>
-                <h3>{{ $product->id }}</h3>
+                <p>Product ID</p>
+                <h3>{{ str_pad($product->id, 6, '0', STR_PAD_LEFT) }}</h3>
             </div>
             <div>
                 <p>Price</p>

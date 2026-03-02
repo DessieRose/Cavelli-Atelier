@@ -95,10 +95,20 @@
                         <i>arrow icon</i>
                 </div>
             </div>
-
-
             </form>
-        
+    </section>
+    
+    <section>
+        @forelse ($products as $product)
+            <x-product-card :product="$product" />
+        @empty
+            <div>
+                <p>No furniture matches your search. Try adjusting the filters!</p>
+            </div>
+        @endforelse
 
+        <div>
+            {{ $products->links() }}
+        </div>
     </section>
 </main>
