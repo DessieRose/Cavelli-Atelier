@@ -1,22 +1,33 @@
 @extends('layouts.app')
 
-@section('title', 'Login - Cavelli Atelier')
+@section('title', 'Dashboard - Cavelli Atelier')
 
 @section('content')
-    <div class="min-h-screen flex items-center justify-center gap-4 flex-col">
-        @include('errors')
-    
-        <h2>Hello, {{ auth()->user()->name }}!</h2>
-        <div class="items-center bg-gray-100 border border-gray-300 rounded-lg p-4">
-            <a href="/logout">Logout</a>
+<main class="flex min-h-screen">
+    <!-- Sidebar -->
+    <section class="w-64 flex-shrink-0">
+        <x-sidebar />
+    </section>
 
+    <!-- Main Content -->
+    <section class="flex-1 bg-gray-50 overflow-auto">
+        <div class="p-10">
+            @include('errors')
+        
+            <div class="bg-gray-100 border border-gray-300 shadow-sm rounded-lg p-10 pb-4 mb-6">
+                <div class="flex justify-between items-start mb-6">
+                    <h1 class="text-2xl font-bold text-gray-900">Welcome, {{ auth()->user()->name }}!</h1>
+                    <a href="{{ route('logout')}}" class="bg-gray-300 hover:bg-gray-400 text-gray-900 px-6 py-2 rounded-lg font-medium transition-colors">
+                        Logout
+                    </a>
+                </div>
+                <hr class="border-gray-300 -mx-6 mb-6">
+                <div class="space-y-4">
+                    <h1 class="font-semibold text-lg p-4">Overview</h1>
+                </div>
+            </div>
         </div>
-    
-        <div class="items-center bg-gray-100 border border-gray-300 rounded-lg p-4">
-            <a href="/products">products page</a>
-
-        </div>
-
-    </div>
-
+    </section>
+</main>
+@endsection
 
