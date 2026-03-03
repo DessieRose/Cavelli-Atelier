@@ -6,6 +6,8 @@ use App\Models\Product;
 use App\Models\ProductType;
 use App\Models\Color;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Material;
 
 class ProductController extends Controller
 {
@@ -23,5 +25,45 @@ class ProductController extends Controller
             'types' => $types,
             'materials' => $materials,
         ]);
+    }
+
+    public function create()
+    {
+        $categories = Category::all();
+        $productTypes = ProductType::all();
+        $colors = Color::all();
+        $materials = Material::all();
+
+        return view('products.create', compact('categories', 'productTypes', 'colors', 'materials'));
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'name'            => 'required|string|max:255|unique:products',
+            'description'     => 'nullable|string',
+            'product_type_id' => 'required|exists:product_types,id',
+            'price'           => 'required|numeric|min:0',
+            'height'          => 'nullable|numeric',
+            'width'           => 'nullable|numeric',
+            'length'          => 'nullable|numeric',
+            'weight'          => 'nullable|numeric',
+        ]);
+
+        $size = $request->height . 'x' . $request->width . 'x' . $request->length;
+
+        $product = Product::create([
+            'name'            => $validated['name'],
+            'description'     => $validated['description'],
+            'product_type_id' => $validated['product_type_id'],
+            'price'           => $validated['price'],
+            'size'            => $size,
+            'weight'          => $validated['weight'],
+        ]);
+
+        $product->colors()->sync($request->input('colors', []));
+        $product->materials()->sync($request->input('materials', []));
+
+        return redirect()->route('products.index')->with('success', 'Product added!');
     }
 }
