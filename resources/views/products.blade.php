@@ -4,7 +4,7 @@
 
 @section('content')
     <main>
-        <section class="items-center bg-gray-100 border border-gray-300 rounded-lg p-4 m-10 overflow-hidden">
+        <section class="items-center bg-gray-100 border border-gray-300 shadow-sm rounded-lg p-10 m-10 overflow-hidden">
             <form method="get" action="/products">
                 @csrf
                 <h1 class="font-semibold text-lg p-4">Products</h1>

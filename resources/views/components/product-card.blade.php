@@ -1,49 +1,55 @@
 @props(['product'])
 
-<div class="items-center bg-gray-100 border border-gray-300 rounded-lg p-4 m-10 overflow-hidden">
-    <div class="flex items-center gap-4">
-        <input type="checkbox" name="select_products[]" value="{{ $product->id }}" class="rounded border-gray-300"/>
-        <div>
+<div class="relative flex items-center bg-gray-100 border border-gray-300 rounded-2xl shadow-sm mb-4 m-10 p-6 gap-6 min-h-[160px]">
+    <div class="absolute top-4 left-4">
+        <input type="checkbox" name="select_products[]" value="{{ $product->id }}" 
+            class="w-6 h-6 rounded border-gray-300 cursor-pointer transition-all" />
+    </div>
+
+    <div class="flex item-center ml-4">
+        <div class="w-32 h-32 bg-gray-50 rounded-xl border border-gray-100 overflow-hidden flex items-center justify-center">
             @if ($product->image)
-                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" />
+                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="object-cover w-full h-full" />
             @else
-            <i>icon</i>
+                <i class="fas fa-couch text-4xl"></i>
             @endif
         </div>
     </div>
-    <div class="border"></div>
-    <div class="container">
-        <div>
+
+    <div class="h-50 border-l border-gray-200"></div>
+
+    <div class="grid grid-cols-3 flex-grow gap-8">
+        <div class="flex flex-col justify-between">
             <div>
-                <p>Name</p>
-                <h3>{{ $product->name }}</h3>
+                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Name</p>
+                <h3 class="font-medium text-gray-800">{{ $product->name }}</h3>
             </div>
-            <div>
-                <p>Product ID</p>
-                <p>{{ str_pad($product->id, 6, '0', STR_PAD_LEFT) }}</h3>
+            <div class="mt-4">
+                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Product ID</p>
+                <p class="font-medium text-gray-800">#{{ str_pad($product->id, 6, '0', STR_PAD_LEFT) }}</h3>
             </div>
+            <div class="mt-4">
+                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Price</p>
+                <p class="font-medium text-gray-800">{{ number_format($product->price) }} kr</h3>
+            </div>
+        </div>
+        <div class="flex flex-col justify-between">
             <div>
-                <p>Price</p>
-                <p>{{ number_format($product->price, 2) }}kr</h3>
+                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Material</p>
+                <p class="font-medium text-gray-800">{{ $product->material ?? 'N/A' }}</h3>
+            </div>
+            <div class="mt-4">
+                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Dimentions (H x W)</p>
+                <p class="font-medium text-gray-800">{{ $product->dimentions ?? 'N/A' }}</h3>
+            </div>
+            <div class="mt-4">
+                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Product Type</p>
+                <p class="font-medium text-gray-800">{{ $product->productType->name }}</h3>
             </div>
         </div>
         <div>
-            <div>
-                <p>Material</p>
-                <p>{{ $product->material ?? 'N/A' }}</h3>
-            </div>
-            <div>
-                <p>Dimentions (H x W)</p>
-                <p>{{ $product->dimentions ?? 'N/A' }}</h3>
-            </div>
-            <div>
-                <p>Product Type</p>
-                <p>{{ $product->productType->name }}</h3>
-            </div>
-        </div>
-        <div>
-            <p>Description</p>
-            <p>{{ Str::limit($product->description, 180) }}</p>
+            <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Description</p>
+            <p class="font-medium text-gray-800">{{ Str::limit($product->description, 180) }}</p>
         </div>
     </div>
 </div>
