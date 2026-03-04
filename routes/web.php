@@ -18,7 +18,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/products', [ProductController::class, 'index'])->name('products.index');
     Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
     Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+    
+    Route::get('/colors', [ColorController::class, 'index'])->name('colors.index');
+    Route::get('/materials', [MaterialController::class, 'index'])->name('materials.index');
 });
-
-Route::resource('colors', ColorController::class);
-Route::resource('materials', MaterialController::class);

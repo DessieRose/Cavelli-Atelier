@@ -14,7 +14,7 @@ class ColorController extends Controller
     {
         $colors = Color::paginate(12);
 
-        return view('colors.index', compact('colors'));
+        return view('attributes.colors.index', compact('colors'));
     }
 
     /**
@@ -22,7 +22,7 @@ class ColorController extends Controller
      */
     public function create()
     {
-        return view('colors.create');
+        return view('attributes.colors.create');
     }
 
     /**
@@ -45,7 +45,7 @@ class ColorController extends Controller
      */
     public function show(Color $color)
     {
-        return view('colors.show', compact('color'));
+        return view('attributes.colors.show', compact('color'));
     }
 
     /**
@@ -53,7 +53,7 @@ class ColorController extends Controller
      */
     public function edit(Color $color)
     {
-        return view('colors.edit', compact('color'));
+        return view('attributes.colors.edit', compact('color'));
     }
 
     /**
