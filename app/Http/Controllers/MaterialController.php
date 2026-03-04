@@ -12,7 +12,9 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        //
+        $materials = Material::paginate(12);
+
+        return view('materials.index', compact('materials'));
     }
 
     /**
@@ -20,7 +22,7 @@ class MaterialController extends Controller
      */
     public function create()
     {
-        //
+        return view('materials.create');
     }
 
     /**
@@ -28,7 +30,13 @@ class MaterialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:10|unique:materials',
+        ]);
+
+        Material::create($validated);
+
+        return redirect()->route('materials.index')->with('success', 'Material added successfully!');
     }
 
     /**
@@ -36,7 +44,7 @@ class MaterialController extends Controller
      */
     public function show(Material $material)
     {
-        //
+        return view('materials.show', compact('material'));
     }
 
     /**
@@ -44,7 +52,7 @@ class MaterialController extends Controller
      */
     public function edit(Material $material)
     {
-        //
+        return view('materials.edit', compact('material'));
     }
 
     /**
@@ -52,7 +60,13 @@ class MaterialController extends Controller
      */
     public function update(Request $request, Material $material)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:10|unique:materials,name,' . $material->id,
+        ]);
+
+        $material->update($validated);
+
+        return redirect()->route('materials.index')->with('success', 'Material updated successfully!');
     }
 
     /**
@@ -60,6 +74,8 @@ class MaterialController extends Controller
      */
     public function destroy(Material $material)
     {
-        //
+        $material->delete();
+
+        return redirect()->route('materials.index')->with('success', 'Material deleted successfully!');
     }
 }

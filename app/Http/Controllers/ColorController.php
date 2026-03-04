@@ -12,7 +12,9 @@ class ColorController extends Controller
      */
     public function index()
     {
-        //
+        $colors = Color::paginate(12);
+
+        return view('colors.index', compact('colors'));
     }
 
     /**
@@ -20,7 +22,7 @@ class ColorController extends Controller
      */
     public function create()
     {
-        //
+        return view('colors.create');
     }
 
     /**
@@ -28,7 +30,14 @@ class ColorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:10|unique:colors',
+            'hex_code' => 'required|string|regex:/^#[0-9A-F]{6}$/i|unique:colors',
+        ]);
+
+        Color::create($validated);
+
+        return redirect()->route('colors.index')->with('success', 'Color added successfully!');
     }
 
     /**
@@ -36,7 +45,7 @@ class ColorController extends Controller
      */
     public function show(Color $color)
     {
-        //
+        return view('colors.show', compact('color'));
     }
 
     /**
@@ -44,7 +53,7 @@ class ColorController extends Controller
      */
     public function edit(Color $color)
     {
-        //
+        return view('colors.edit', compact('color'));
     }
 
     /**
@@ -52,7 +61,14 @@ class ColorController extends Controller
      */
     public function update(Request $request, Color $color)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:10|unique:colors,name,' . $color->id,
+            'hex_code' => 'required|string|regex:/^#[0-9A-F]{6}$/i|unique:colors,hex_code,' . $color->id,
+        ]);
+
+        $color->update($validated);
+
+        return redirect()->route('colors.index')->with('success', 'Color updated successfully!');
     }
 
     /**
@@ -60,6 +76,8 @@ class ColorController extends Controller
      */
     public function destroy(Color $color)
     {
-        //
+        $color->delete();
+
+        return redirect()->route('colors.index')->with('success', 'Color deleted successfully!');
     }
 }
