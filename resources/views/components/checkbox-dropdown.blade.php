@@ -1,4 +1,4 @@
-@props(['label', 'items', 'name'])
+@props(['label', 'items', 'name', 'selected' => []])
 
 <fieldset>
     <legend class="form-label">{{ $label }}</legend>
@@ -12,7 +12,7 @@
                     <input type="checkbox"
                            name="{{ $name }}[]"
                            value="{{ $item->id }}"
-                           {{ in_array($item->id, old($name, [])) ? 'checked' : '' }}>
+                           {{ in_array($item->id, old($name, $selected)) ? 'checked' : '' }}>
                     {{ $item->name }}
                 </label>
             @endforeach
