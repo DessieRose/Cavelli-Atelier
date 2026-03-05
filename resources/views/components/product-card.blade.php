@@ -45,8 +45,8 @@
                 </p>
             </div>
             <div class="mt-4">
-                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Dimentions (H x W)</p>
-                <p class="font-medium text-gray-800">{{ $product->dimentions ?? 'N/A' }}</h3>
+                <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Dimentions</p>
+                <p class="font-medium text-gray-800">{{ $product->dimensions ?? 'N/A' }}</p>
             </div>
             <div class="mt-4">
                 <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Product Type</p>
