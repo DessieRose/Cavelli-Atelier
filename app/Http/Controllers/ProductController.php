@@ -67,4 +67,41 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('success', 'Product added!');
     }
+
+    public function edit(Product $product)
+    {
+        $categories = Category::all();
+        $productTypes = ProductType::all();
+        $colors = Color::all();
+        $materials = Material::all();
+
+        return view('products.edit', compact('product', 'categories', 'productTypes', 'colors', 'materials'));
+    }
+
+    public function update(Request $request, Product $product)
+    {
+        $validated = $request->validate([
+            'name'            => 'required|string|max:255|unique:products,name,' . $product->id,
+            'description'     => 'nullable|string',
+            'product_type_id' => 'required|exists:product_types,id',
+            'price'           => 'required|numeric|min:0',
+            'height'          => 'nullable|numeric',
+            'width'           => 'nullable|numeric',
+            'length'          => 'nullable|numeric',
+            'weight'          => 'nullable|numeric',
+        ]);
+
+        $product->update($validated);
+        $product->colors()->sync($request->input('colors', []));
+        $product->materials()->sync($request->input('materials', []));
+
+        return redirect()->route('products.index')->with('success', 'Product updated!');
+    }
+
+    public function destroy(Product $product)
+    {
+        $product->delete();
+
+        return redirect()->route('products.index')->with('success', 'Product deleted!');
+    }
 }
