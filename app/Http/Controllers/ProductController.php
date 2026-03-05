@@ -16,7 +16,38 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Product::with('materials', 'colors', 'productType')->paginate(12);
+
+        $query = Product::with('materials', 'colors', 'productType');
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%")
+                  ->orWhere('description', 'LIKE', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('type')) {
+            $query->where('product_type_id', $request->type);
+        }
+
+        if ($request->filled('material')) {
+            $query->whereHas('materials', function ($q) use ($request) {
+                $q->where('materials.id', $request->material);
+            });
+        }
+
+        if ($request->filled('price')) {
+            $direction = $request->price === 'low' ? 'asc' : 'desc';
+            $query->orderBy('price', $direction);
+        }
+
+        if ($request->filled('sort')) {
+            $direction = $request->sort === 'newest' ? 'desc' : 'asc';
+            $query->orderBy('created_at', $direction);
+        }
+
+        $products = $query->paginate(12)->withQueryString();
         $types = ProductType::all();
         $materials = Material::all();
 

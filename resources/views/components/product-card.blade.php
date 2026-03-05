@@ -26,11 +26,11 @@
             </div>
             <div class="mt-4">
                 <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Product ID</p>
-                <p class="font-medium text-gray-800">#{{ str_pad($product->id, 6, '0', STR_PAD_LEFT) }}</h3>
+                <p class="font-medium text-gray-800">#{{ str_pad($product->id, 6, '0', STR_PAD_LEFT) }}</p>
             </div>
             <div class="mt-4">
                 <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Price</p>
-                <p class="font-medium text-gray-800">{{ number_format($product->price) }} kr</h3>
+                <p class="font-medium text-gray-800">{{ number_format($product->price) }} kr</p>
             </div>
         </div>
         <div class="flex flex-col justify-between">
@@ -50,7 +50,7 @@
             </div>
             <div class="mt-4">
                 <p class="text-[10px] text-gray-400 uppercase font-bold tracking-wider">Product Type</p>
-                <p class="font-medium text-gray-800">{{ $product->productType->name }}</h3>
+                <p class="font-medium text-gray-800">{{ $product->productType->name }}</p>
             </div>
         </div>
         <div>
