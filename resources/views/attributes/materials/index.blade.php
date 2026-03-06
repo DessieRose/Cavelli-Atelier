@@ -40,7 +40,14 @@
                     </form>
                 </div>
 
-                <div class="px-10 py-6">
+                <x-card-grid
+                    :items="$materials"
+                    mode="material"
+                    :columns="3"
+                    :columns2="2"
+                />
+
+                {{-- <div class="px-10 py-6">
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         @forelse ($materials as $material)
                             <div class="relative flex items-center bg-gray-100 border border-gray-200 rounded-2xl shadow-sm mb-4 p-6 gap-6">
@@ -75,7 +82,7 @@
                             </div>
                         @endforelse
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
     </main>

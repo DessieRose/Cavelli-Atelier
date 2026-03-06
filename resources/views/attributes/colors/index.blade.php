@@ -44,7 +44,14 @@
                     </form>
                 </div>
 
-                <div class="px-10 py-6">
+                <x-card-grid
+                    :items="$colors"
+                    mode="color"
+                    :columns="2"
+                    :columns2="3"
+                />
+
+                {{-- <div class="px-10 py-6">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         @forelse ($colors as $color)
                             <div class="relative flex items-center bg-gray-100 border border-gray-200 rounded-2xl shadow-sm mb-4 p-6 gap-6">
@@ -89,7 +96,7 @@
                     <div class="mt-6">
                         {{ $colors->links() }}
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
     </main>
