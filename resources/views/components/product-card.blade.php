@@ -7,7 +7,7 @@
     </div>
 
     <div class="flex item-center ml-4">
-        <div class="w-32 h-32 rounded-xl border border-gray-100 overflow-hidden flex items-center justify-center">
+        <div class="w-40 h-40 rounded-xl border border-gray-100 overflow-hidden flex items-center justify-center">
             @if ($product->image)
                 <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="object-cover w-full h-full" />
             @else
