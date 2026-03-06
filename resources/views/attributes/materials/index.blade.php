@@ -47,42 +47,6 @@
                     :columns2="2"
                 />
 
-                {{-- <div class="px-10 py-6">
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        @forelse ($materials as $material)
-                            <div class="relative flex items-center bg-gray-100 border border-gray-200 rounded-2xl shadow-sm mb-4 p-6 gap-6">
-                                <div class="w-16 h-16 rounded-xl border border-gray-100 shadow-inner" 
-                                    style="background-img: {{ $material->image ?? 'N/A' }}">
-                                </div>
-
-                                <div class="h-12 border-l border-gray-100"></div>
-
-                                <div class="grid grid-cols-2 flex-grow gap-8">
-                                    <div>
-                                        <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1">Material Name</p>
-                                        <h1 class="font-bold text-gray-800 text-lg">{{ $material->name }}</h1>
-                                    </div>
-                                    <div class="flex items-center justify-end gap-4">
-                                        <a href="{{ route('materials.edit', $material->id) }}" class="text-gray-400 hover:text-[#8eb88e] transition-colors">
-                                            <i class="fa fa-edit text-xl"></i>
-                                        </a>
-                                        <form action="{{ route('materials.destroy', $material->id) }}" method="POST" onsubmit="return confirm('Delete this material?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="text-gray-400 hover:text-red-500 transition-colors cursor-pointer">
-                                                <i class="fa fa-trash text-xl"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        @empty
-                            <div class="text-center p-20 bg-white rounded-2xl border border-gray-200">
-                                <p class="text-gray-500 italic">No material found. Start by adding a new one!</p>
-                            </div>
-                        @endforelse
-                    </div>
-                </div> --}}
             </div>
         </section>
     </main>
