@@ -32,7 +32,6 @@
             <div class="sub-menu hidden mt-4 ml-4 flex flex-col gap-3 text-lg text-gray-800">
                 <a href="{{ route('colors.index') }}" class="hover:underline">Colors</a>
                 <a href="{{ route('materials.index') }}" class="hover:underline">Materials</a>
-                <a href="#" class="hover:underline">Rooms</a>
             </div>
             
         </div>

@@ -7,7 +7,15 @@
     <title>@yield('title', 'Cavelli Atelier')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-gray-50">
-    @yield('content')
+<body class="bg-gray-50 flex">
+    {{-- Sidebar --}}
+    <div class="w-64 flex-shrink-0">
+        @include('components.sidebar')
+    </div>
+    
+    {{-- Main Content --}}
+    <div class="flex-1">
+        @yield('content')
+    </div>
 </body>
 </html>

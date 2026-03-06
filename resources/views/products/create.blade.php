@@ -4,13 +4,6 @@
 
 @section('content')
 <main class="flex min-h-screen">
-
-    {{-- Sidebar --}}
-    <section class="w-64 flex-shrink-0">
-        <x-sidebar />
-    </section>
-
-    {{-- Main Content --}}
     <section class="flex-1">
             <form method="POST" action="{{ route('products.store') }}">
                 @csrf

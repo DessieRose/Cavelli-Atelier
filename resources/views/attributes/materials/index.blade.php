@@ -4,12 +4,6 @@
 
 @section('content')
     <main class="flex min-h-screen">
-        <!-- Sidebar -->
-        <section class="w-64 flex-shrink-0">
-            <x-sidebar />
-        </section>
-
-        <!-- Main Content -->
         <section class="flex-1 bg-gray-50 overflow-auto">
             <div class="p-10">
                 @include('errors')
