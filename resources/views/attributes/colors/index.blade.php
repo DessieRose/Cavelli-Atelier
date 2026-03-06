@@ -4,12 +4,6 @@
 
 @section('content')
     <main class="flex min-h-screen">
-        <!-- Sidebar -->
-        <section class="w-64 flex-shrink-0">
-            <x-sidebar />
-        </section>
-
-        <!-- Main Content -->
         <section class="flex-1 bg-gray-50 overflow-auto">
             <div class="p-10">
                 @include('errors')
@@ -70,13 +64,15 @@
                                         <p class="text-gray-500 font-mono">{{ $color->hex_code }}</p>
                                     </div>
                                     <div class="flex items-center justify-end gap-4">
-                                        <a href="" class="text-gray-400 hover:text-[#8eb88e] transition-colors">
+                                        <button href="" class="text-gray-400 hover:text-[#8eb88e] transition-colors">
+                                            <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1">Edit</p>
                                             <i class="fa fa-edit text-3xl"></i>
-                                        </a>
+                                        </button>
                                         <form action="{{ route('colors.destroy', $color->id) }}" method="POST" onsubmit="return confirm('Delete this color?')">
                                             @csrf
                                             @method('DELETE')
                                             <button class="text-gray-400 hover:text-red-500 transition-colors cursor-pointer">
+                                                <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1">Delete</p>
                                                 <i class="fa fa-trash text-3xl"></i>
                                             </button>
                                         </form>
