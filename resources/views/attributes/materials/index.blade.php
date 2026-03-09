@@ -18,8 +18,8 @@
                 <div class="bg-gray-100 border border-gray-300 shadow-sm rounded-lg p-10 pb-4 mb-6">
                     <h1 class="font-semibold text-lg p-4">Materials</h1>
                     <div class="flex items-center gap-4 mb-6">
-                        <a href="" 
-                            class="bg-[#8eb88e] hover:bg-[#7a9e7a] text-white px-4 py-2.5 rounded-full flex items-center gap-2 transition-colors">
+                        <a href="" role="button" aria-label="Add a new material"
+                            class="btn-primary">
                             <span class="text-xl">+</span> Add new material
                         </a>
                     </div>

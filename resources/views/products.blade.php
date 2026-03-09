@@ -46,8 +46,8 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('products.create') }}"
-                        class="shrink-0 bg-[#8eb88e] hover:bg-[#7a9e7a] text-white px-4 py-2.5 rounded-full flex items-center gap-2 transition-colors text-sm">
+                    <a href="{{ route('products.create') }}" role="button" aria-label="Add a new product"
+                        class="btn-primary">
                         <span class="text-xl leading-none">+</span> Add new product
                     </a>
                 </div>
@@ -103,12 +103,11 @@
                             </div>
                         </div>
                     </div>
-
-                    <button type="submit"
-                        class="shrink-0 bg-[#8eb88e] hover:bg-[#7a9e7a] text-white px-4 py-2.5 rounded-full text-sm font-medium transition-colors">
+                    <button type="submit" aria-label="Apply filters"
+                        class="btn-primary">
                         Apply Filters
                     </button>
-                    <a href="{{ route('products.index') }}"
+                    <a href="{{ route('products.index') }}" role="button" aria-label="Reset filters"
                         class="shrink-0 text-sm text-gray-500 hover:text-gray-700 underline self-center">
                         Reset
                     </a>
