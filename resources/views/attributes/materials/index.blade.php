@@ -5,6 +5,13 @@
 @section('content')
     <main class="flex min-h-screen">
         <section class="flex-1 bg-gray-50 overflow-auto">
+
+            {{-- breadcrumbs --}}
+            <x-breadcrumbs :links="[
+                ['label' => 'Overview', 'url' => route('dashboard')],
+                ['label' => 'Materials', 'url' => route('materials.index')],
+            ]" />
+
             <div class="p-10">
                 @include('errors')
             

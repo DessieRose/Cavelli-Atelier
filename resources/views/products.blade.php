@@ -4,6 +4,12 @@
 
 @section('content')
     <main class="flex-1 bg-gray-50 overflow-auto">
+        {{-- breadcrumbs --}}
+        <x-breadcrumbs :links="[
+            ['label' => 'Overview', 'url' => route('dashboard')],
+            ['label' => 'Products', 'url' => route('products.index')],
+        ]" />
+
         <div class="bg-gray-100 border border-gray-300 shadow-sm rounded-2xl p-6 lg:p-10 m-4 lg:m-10 mb-px">
             <form method="GET" action="{{ route('products.index') }}">
                 <h1 class="font-semibold text-lg p-4">Products</h1>

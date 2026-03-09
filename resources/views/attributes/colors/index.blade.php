@@ -5,8 +5,17 @@
 @section('content')
     <main class="flex min-h-screen">
         <section class="flex-1 bg-gray-50 overflow-auto">
+
+             {{-- breadcrumbs --}}
+             <x-breadcrumbs :links="[
+                ['label' => 'Overview', 'url' => route('dashboard')],
+                ['label' => 'Colors', 'url' => route('colors.index')],
+            ]" />
+            
             <div class="p-10">
                 @include('errors')
+
+                
             
                 <div class="bg-gray-100 border border-gray-300 shadow-sm rounded-lg p-10 pb-4 mb-6">
                     <h1 class="font-semibold text-lg p-4">Colors</h1>
