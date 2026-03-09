@@ -14,7 +14,7 @@
                         <span class="pointer-events-none absolute inset-y-0 left-4 flex items-center text-gray-400">
                             <i class="fa fa-search"></i>
                         </span>
-                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Search"
+                        <input type="text" name="search" value="{{ request('search') }}" placeholder="Search" maxlength="50"
                             class="w-full bg-gray-200 rounded-full py-2.5 pl-11 pr-12 text-sm font-medium" />
                     </div>
 
@@ -120,7 +120,7 @@
                 </div>
             @endforelse
 
-            <div>
+            <div class="mt-8 p-4 bg-white rounded-xl shadow-sm border border-gray-200">
                 {{ $products->links() }}
             </div>
         </div>
