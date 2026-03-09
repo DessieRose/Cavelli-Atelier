@@ -1,15 +1,15 @@
 @props(['product'])
 
-<div class="relative flex flex-col lg:flex-row bg-gray-100 border border-gray-300 rounded-2xl shadow-sm mb-4 overflow-hidden min-w-0">
+<article class="relative flex flex-col lg:flex-row bg-gray-100 border border-gray-300 rounded-2xl shadow-sm mb-4 overflow-hidden min-w-0">
 
     {{-- Left: Image panel --}}
     <div class="flex items-center justify-center bg-gray-200 shrink-0
                 w-full h-40 lg:w-48 lg:h-auto">
         @if ($product->image)
-            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
+            <img src="{{ asset('storage/' . $product->image) }}" alt="Product image: {{ $product->name }}"
                 class="object-cover w-full h-full" />
         @else
-            <i class="fas fa-couch text-4xl text-gray-400"></i>
+            <i class="fas fa-couch text-4xl text-gray-400" aria-hidden="true"></i>
         @endif
     </div>
 
@@ -24,7 +24,7 @@
         <div class="flex flex-wrap items-start gap-x-8 gap-y-2 mb-4 pb-4 border-b border-gray-200">
             <div>
                 <p class="text-[9px] text-gray-400 uppercase font-black tracking-widest mb-0.5">Name</p>
-                <h3 class="font-bold text-gray-800 text-base lg:text-lg">{{ $product->name }}</h3>
+                <h2 class="font-bold text-gray-800 text-base lg:text-lg">{{ $product->name }}</h2>
             </div>
             <div>
                 <p class="text-[9px] text-gray-400 uppercase font-black tracking-widest mb-0.5">Price</p>
@@ -85,25 +85,27 @@
     </div>
 
     {{-- Divider --}}
-    <div class="hidden lg:block w-px bg-gray-300 shrink-0"></div>
-    <div class="block lg:hidden h-px bg-gray-300 w-full"></div>
+    <div class="hidden lg:block w-px bg-gray-300 shrink-0" aria-hidden="true"></div>
+    <div class="block lg:hidden h-px bg-gray-300 w-full" aria-hidden="true"></div>
 
     {{-- Right: Actions panel --}}
     <div class="flex lg:flex-col items-center justify-center gap-6 lg:gap-8
                 p-4 lg:px-6 lg:py-6 shrink-0">
-        <a href="{{ route('products.edit', $product) }}" class="text-gray-400 hover:text-[#8eb88e] transition-colors cursor-pointer text-center">
+        <a href="{{ route('products.edit', $product) }}" class="text-gray-400 hover:text-[#8eb88e] transition-colors cursor-pointer text-center"
+           aria-label="Edit product: {{ $product->name }}">
             <p class="text-[8px] lg:text-[9px] text-gray-400 uppercase font-black tracking-widest mb-1">Edit</p>
-            <i class="fa fa-edit text-2xl lg:text-3xl"></i>
+            <i class="fa fa-edit text-2xl lg:text-3xl" aria-hidden="true"></i>
         </a>
         <form action="{{ route('products.destroy', $product->id) }}" method="POST"
               onsubmit="return confirm('Delete this product?')">
             @csrf
             @method('DELETE')
-            <button type="button" class="text-gray-400 hover:text-red-500 transition-colors cursor-pointer text-center">
+            <button type="button" class="text-gray-400 hover:text-red-500 transition-colors cursor-pointer text-center"
+                    aria-label="Delete product: {{ $product->name }}">
                 <p class="text-[8px] lg:text-[9px] text-gray-400 uppercase font-black tracking-widest mb-1">Delete</p>
-                <i class="fa fa-trash text-2xl lg:text-3xl"></i>
+                <i class="fa fa-trash text-2xl lg:text-3xl" aria-hidden="true"></i>
             </button>
         </form>
     </div>
 
-</div>
+</article>
