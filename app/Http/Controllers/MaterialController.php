@@ -10,9 +10,23 @@ class MaterialController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $materials = Material::paginate(12);
+        $query = Material::query();
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where('name', 'LIKE', "%{$search}%");
+        }
+
+        if ($request->filled('sort')) {
+            $direction = $request->sort === 'name_asc' ? 'asc' : 'desc';
+            $query->orderBy('name', $direction);
+        } else {
+            $query->orderBy('name', 'asc');
+        }
+
+        $materials = $query->paginate(12)->withQueryString();
 
         return view('attributes.materials.index', compact('materials'));
     }
