@@ -41,7 +41,7 @@
 
                     {{-- Name --}}
                     <div class="min-w-0 shrink-0">
-                        <p class="text-[8px] lg:text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1">
+                        <p class="uppercase-text">
                             {{ $mode === 'color' ? 'Color Name' : 'Material Name' }}
                         </p>
                         <h3 class="font-bold text-gray-800 text-sm lg:text-lg truncate">{{ $item->name }}</h3>
@@ -50,7 +50,7 @@
                     {{-- Hex code (color mode only) --}}
                     @if ($mode === 'color')
                         <div class="min-w-0 shrink-0">
-                            <p class="text-[8px] lg:text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1">Hex Code</p>
+                            <p class="uppercase-text">Hex Code</p>
                             <p class="font-bold text-gray-500 text-sm lg:text-lg t-0">{{ $item->hex_code }}</p>
                         </div>
                     @endif
@@ -59,7 +59,7 @@
                     <div class="flex items-start gap-2 lg:gap-4 ml-auto shrink-0">
                         <button type="button" class="text-gray-400 hover:text-[#8eb88e] transition-colors cursor-pointer text-center"
                                 aria-label="Edit {{ $mode }}: {{ $item->name }}">
-                            <p class="text-[8px] lg:text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1">Edit</p>
+                            <p class="uppercase-text">Edit</p>
                             <i class="fa fa-edit text-xl lg:text-3xl" aria-hidden="true"></i>
                         </button>
                         <form action="{{ route($routeName, $item['id']) }}" method="POST"
@@ -68,7 +68,7 @@
                             @method('DELETE')
                             <button class="text-gray-400 hover:text-red-500 transition-colors cursor-pointer text-center"
                                     aria-label="Delete {{ $mode }}: {{ $item->name }}">
-                                <p class="text-[8px] lg:text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1">Delete</p>
+                                <p class="uppercase-text">Delete</p>
                                 <i class="fa fa-trash text-xl lg:text-3xl" aria-hidden="true"></i>
                             </button>
                         </form>

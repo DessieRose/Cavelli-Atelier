@@ -23,16 +23,16 @@
         {{-- Top row: Name + ID + Price --}}
         <div class="flex flex-wrap items-start gap-x-8 gap-y-2 mb-4 pb-4 border-b border-gray-200">
             <div>
-                <p class="text-[9px] text-gray-400 uppercase font-black tracking-widest mb-0.5">Name</p>
-                <h2 class="font-bold text-gray-800 text-base lg:text-lg">{{ $product->name }}</h2>
+                <p class="uppercase-text">Name</p>
+                <h2 class="product-text-medium">{{ $product->name }}</h2>
             </div>
             <div>
-                <p class="text-[9px] text-gray-400 uppercase font-black tracking-widest mb-0.5">Price</p>
-                <p class="font-bold text-gray-800 text-base lg:text-lg">{{ number_format($product->price) }} kr</p>
+                <p class="uppercase-text">Price</p>
+                <p class="product-text-medium">{{ number_format($product->price) }} kr</p>
             </div>
             <div>
-                <p class="text-[9px] text-gray-400 uppercase font-black tracking-widest mb-0.5">Product ID</p>
-                <p class="font-medium text-gray-600 text-sm lg:text-base">#{{ str_pad($product->id, 6, '0', STR_PAD_LEFT) }}</p>
+                <p class="uppercase-text">Product ID</p>
+                <p class="product-text-small">#{{ str_pad($product->id, 6, '0', STR_PAD_LEFT) }}</p>
             </div>
         </div>
 
@@ -42,32 +42,32 @@
             {{-- Left column --}}
             <div class="flex flex-col gap-3">
                 <div>
-                    <p class="text-[9px] text-gray-400 uppercase font-black tracking-widest mb-0.5">Material</p>
-                    <p class="font-medium text-gray-700 text-sm truncate">
+                    <p class="uppercase-text">Material</p>
+                    <p class="product-text-small">
                         {{ $product->materials->count() > 0 ? $product->materials->pluck('name')->join(', ') : 'N/A' }}
                     </p>
                 </div>
                 <div>
-                    <p class="text-[9px] text-gray-400 uppercase font-black tracking-widest mb-0.5">Color</p>
-                    <p class="font-medium text-gray-700 text-sm truncate">
+                    <p class="uppercase-text">Color</p>
+                    <p class="product-text-small">
                         {{ $product->colors->count() > 0 ? $product->colors->pluck('name')->join(', ') : 'N/A' }}
                     </p>
                 </div>
                 <div>
-                    <p class="text-[9px] text-gray-400 uppercase font-black tracking-widest mb-0.5">Product Type</p>
-                    <p class="font-medium text-gray-700 text-sm">{{ $product->productType->name }}</p>
+                    <p class="uppercase-text">Product Type</p>
+                    <p class="product-text-small">{{ $product->productType->name }}</p>
                 </div>
             </div>
 
             {{-- Right column --}}
             <div class="flex flex-col gap-3">
                 <div>
-                    <p class="text-[9px] text-gray-400 uppercase font-black tracking-widest mb-0.5">Dimensions (mm)</p>
-                    <p class="font-medium text-gray-700 text-sm">{{ $product->dimensions ?? 'N/A' }}</p>
+                    <p class="uppercase-text">Dimensions (mm)</p>
+                    <p class="product-text-small">{{ $product->dimensions ?? 'N/A' }}</p>
                 </div>
                 <div>
-                    <p class="text-[9px] text-gray-400 uppercase font-black tracking-widest mb-0.5">Weight</p>
-                    <p class="font-medium text-gray-700 text-sm">
+                    <p class="uppercase-text">Weight</p>
+                    <p class="product-text-small">
                         @if($product->weight)
                             {{ rtrim(rtrim($product->weight, '0'), '.') }} kg
                         @else
@@ -76,8 +76,8 @@
                     </p>
                 </div>
                 <div>
-                    <p class="text-[9px] text-gray-400 uppercase font-black tracking-widest mb-0.5">Description</p>
-                    <p class="font-medium text-gray-700 text-sm">{{ Str::limit($product->description, 180) }}</p>
+                    <p class="uppercase-text">Description</p>
+                    <p class="product-text-small">{{ Str::limit($product->description, 180) }}</p>
                 </div>
             </div>
 
@@ -93,7 +93,7 @@
                 p-4 lg:px-6 lg:py-6 shrink-0">
         <a href="{{ route('products.edit', $product) }}" class="text-gray-400 hover:text-[#8eb88e] transition-colors cursor-pointer text-center"
            aria-label="Edit product: {{ $product->name }}">
-            <p class="text-[8px] lg:text-[9px] text-gray-400 uppercase font-black tracking-widest mb-1">Edit</p>
+            <p class="uppercase-text">Edit</p>
             <i class="fa fa-edit text-2xl lg:text-3xl" aria-hidden="true"></i>
         </a>
         <form action="{{ route('products.destroy', $product->id) }}" method="POST"
@@ -102,7 +102,7 @@
             @method('DELETE')
             <button type="button" class="text-gray-400 hover:text-red-500 transition-colors cursor-pointer text-center"
                     aria-label="Delete product: {{ $product->name }}">
-                <p class="text-[8px] lg:text-[9px] text-gray-400 uppercase font-black tracking-widest mb-1">Delete</p>
+                <p class="uppercase-text">Delete</p>
                 <i class="fa fa-trash text-2xl lg:text-3xl" aria-hidden="true"></i>
             </button>
         </form>

@@ -25,3 +25,15 @@
 .btn-danger {
     @apply bg-red-500 hover:bg-red-600 text-white px-4 py-2.5 rounded-full transition-colors;
 }
+
+.uppercase-text {
+    @apply text-[8px] lg:text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1;
+}
+
+.product-text-medium {
+    @apply font-bold text-gray-700 text-base lg:text-lg;
+}
+
+.product-text-small {
+    @apply font-medium text-gray-700 text-sm lg:text-base;
+}
