@@ -12,6 +12,12 @@ class ColorController extends Controller
      */
     public function index(Request $request)
     {
+        // Validate search parameter - reject if it's only whitespace
+        if ($request->has('search') && trim($request->search) === '') {
+            return redirect()->route('colors.index')
+                ->withErrors(['search' => 'You have to add something in your search.']);
+        }
+
         $query = Color::query();
 
         if ($request->filled('search')) {
@@ -19,12 +25,12 @@ class ColorController extends Controller
             $query->where('name', 'LIKE', "%{$search}%");
         }
 
-        if ($request->filled('sort')) {
-            $direction = $request->sort === 'name_asc' ? 'asc' : 'desc';
-            $query->orderBy('name', $direction);
-        } else {
-            $query->orderBy('name', 'asc');
-        }
+        // if ($request->filled('sort')) {
+        //     $direction = $request->sort === 'name_asc' ? 'asc' : 'desc';
+        //     $query->orderBy('name', $direction);
+        // } else {
+        //     $query->orderBy('name', 'asc');
+        // }
 
         $colors = $query->paginate(12)->withQueryString();
 
