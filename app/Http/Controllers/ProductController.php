@@ -22,7 +22,7 @@ class ProductController extends Controller
         
             if (!$hasOtherFilters) {
                 return redirect()->route('products.index')
-                    ->withErrors(['search' => 'You have to add something in your search.']);
+                    ->withErrors(['search' => 'You have to add something in your search or choose a filter.']);
             }
         }
 
