@@ -13,8 +13,8 @@
         </a>
 
         <div>
-            <button class="menu-toggle flex items-center justify-between w-full text-lg lg:text-2xl font-medium text-gray-900 hover:text-white transition-colors cursor-pointer" 
-                    aria-expanded="false" aria-controls="products-menu">
+            <button class="menu-toggle flex items-center justify-between w-full text-lg lg:text-2xl font-medium text-gray-900 hover:text-white transition-colors cursor-pointer"
+                aria-expanded="false" aria-controls="products-menu">
                 Products
                 <i class="fas fa-chevron-down text-sm ml-2 transition-transform duration-200" aria-hidden="true"></i>
             </button>
@@ -26,8 +26,8 @@
         </div>
 
         <div>
-            <button class="menu-toggle flex items-center justify-between w-full text-lg lg:text-2xl font-medium text-gray-900 hover:text-white transition-colors cursor-pointer" 
-                    aria-expanded="false" aria-controls="attributes-menu">
+            <button class="menu-toggle flex items-center justify-between w-full text-lg lg:text-2xl font-medium text-gray-900 hover:text-white transition-colors cursor-pointer"
+                aria-expanded="false" aria-controls="attributes-menu">
                 Attributes
                 <i class="fas fa-chevron-down text-sm ml-2 transition-transform duration-200" aria-hidden="true"></i>
             </button>
@@ -37,6 +37,12 @@
             </div>
         </div>
     </nav>
+    <form method="POST" action="{{ route('logout') }}" class="m-0">
+        @csrf
+        <button type="submit" class="bg-gray-300 hover:bg-gray-400 text-gray-900 px-6 py-2 rounded-lg font-medium transition-colors cursor-pointer">
+            Logout
+        </button>
+    </form>
 </aside>
 
 <script>
