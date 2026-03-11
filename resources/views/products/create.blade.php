@@ -19,7 +19,7 @@
         <div class="flex m-10 mb-px justify-between items-center">
             <h1 class="font-semibold text-lg">Add New Product</h1>
             <button type="submit" class="btn-primary">
-                + Save Product
+                Save Product
             </button>
         </div>
         @include('products._form')
