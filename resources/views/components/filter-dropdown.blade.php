@@ -2,11 +2,12 @@
 
 @props([
     'name', 
-    'ariaLabel' => '',
+    'ariaLabel' => '', 
     'options' => [], 
-    'label' => null,           {{-- Visible label (Optional) --}}
-    'prefix' => 'Show',        {{-- "Show" or "Sort" --}}
-    'defaultLabel' => 'All'    {{-- e.g., "All products" or "Default" --}}
+    'label' => null,           
+    'prefix' => null,          {{-- Ensure this is null! --}}
+    'defaultLabel' => 'All',
+    'selected' => null         
 ])
 
 <div class="flex flex-col gap-2">
@@ -14,17 +15,21 @@
         <label class="font-bold text-gray-800 text-sm ml-4">{{ $label }}</label>
     @endif
 
-    <div class="relative inline-block shrink-0">
+    <div class="relative w-full group">
         <select 
-            name="{{ $name }}" 
-            class="appearance-none bg-gray-200 rounded-full py-2.5 pl-4 pr-12 text-gray-600 text-sm font-medium cursor-pointer"
+            name="{{ $name }}"
+            class="list-none appearance-none bg-gray-200 rounded-full py-2.5 pl-4 pr-12 text-gray-600 text-sm font-medium cursor-pointer w-full flex justify-between items-center focus:outline-none"
             aria-label="{{ $ariaLabel }}">
     
-            <option value="">{{ $prefix }}: {{ $defaultLabel }}</option>
+            <option value="">
+                {{ $prefix ? $prefix . ': ' : '' }}{{ $defaultLabel }}
+            </option>
     
             @foreach($options as $value => $display)
-                <option value="{{ $value }}" {{ request($name) == (string)$value ? 'selected' : '' }}>
-                    {{ $prefix }}: {{ $display }}
+                <option class="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" 
+                    value="{{ $value }}" 
+                    {{ (old($name) == $value || $selected == $value) ? 'selected' : '' }}>
+                    {{ $prefix ? $prefix . ': ' : '' }}{{ $display }}
                 </option>
             @endforeach
         </select>

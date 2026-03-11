@@ -59,12 +59,22 @@
 
                 {{-- Materials multi-select --}}
                 <div class="flex flex-col gap-2">
-                    <x-checkbox-dropdown label="Materials:" :items="$materials" name="materials"
-                        :selected="$editing ? $product->materials->pluck('id')->toArray() : []" />
+                    <x-checkbox-dropdown 
+                        label="Materials" 
+                        name="materials"
+                        :items="$materials->pluck('name', 'id')" 
+                        :selected="$editing ? $product->materials->pluck('id')->toArray() : []"
+                        {{-- placeholder="Select materials..."  --}}
+                    />
 
                     {{-- Colors multi-select --}}
-                    <x-checkbox-dropdown label="Colors:" :items="$colors" name="colors"
-                        :selected="$editing ? $product->colors->pluck('id')->toArray() : []" />
+                    <x-checkbox-dropdown 
+                        label="Colors" 
+                        name="colors"
+                        :items="$colors->pluck('name', 'id')" 
+                        :selected="$editing ? $product->colors->pluck('id')->toArray() : []" 
+                        placeholder="Select colors..."
+                    />
                 </div>
             </div>
         </x-form-section>
@@ -77,7 +87,7 @@
         {{-- SECTION: Category --}}
         <x-form-section title="Category">
                 <div>
-                    <label class="form-label" for="category_id">Product Category:</label>
+                    {{-- <label class="form-label" for="category_id">Product Category:</label>
                     <select class="@error('category_id') !border-red-500 @enderror" id="category_id" name="category_id" required aria-describedby="category_id-error">
                         <option value="">-- Select category --</option>
                         @foreach ($categories as $category)
@@ -86,12 +96,21 @@
                             {{ $category->name }}
                         </option>
                         @endforeach
-                    </select>
+                    </select> --}}
+                    <x-filter-dropdown 
+                        name="category_id"
+                        label="Product Category *"
+                        aria-label="Select product category"
+                        prefix="" 
+                        defaultLabel="Select category"
+                        :selected="old('category_id', $product->productType->category_id ?? '')"
+                        :options="$categories->pluck('name', 'id')" 
+                    />
                     <x-input-error field="category_id" />
                 </div>
 
                 <div>
-                    <label class="form-label" for="product_type_id">Product Sub-Category:</label>
+                    {{-- <label class="form-label" for="product_type_id">Product Sub-Category:</label>
                     <select class="@error('product_type_id') !border-red-500 @enderror" id="product_type_id" name="product_type_id" required aria-describedby="product_type_id-error">
                         <option value="">-- Select type --</option>
                         @foreach ($productTypes as $type)
@@ -100,7 +119,16 @@
                             {{ $type->name }}
                         </option>
                         @endforeach
-                    </select>
+                    </select> --}}
+
+                    <x-filter-dropdown 
+                        name="product_type_id"
+                        label="Product Sub-Category *"
+                        aria-label="Select product sub-category"
+                        defaultLabel="Select type"
+                        :selected="old('product_type_id', $product->product_type_id ?? '')"
+                        :options="$productTypes->pluck('name', 'id')" 
+                    />  
                     <x-input-error field="product_type_id" />
                 </div>
         </x-form-section>
