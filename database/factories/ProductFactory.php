@@ -17,16 +17,18 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
-        $name = fake()->words(3, true);
+        $createdAt = fake()->dateTimeBetween('-2 years', 'now');
+
         return [
             'product_type_id' => fake()->randomElement(ProductType::pluck('id')),
-            'name' => ucfirst($name),
-            'description' => fake()->sentence(),
-            'price' => fake()->randomFloat(2, 10, 1000),
-            'height' => fake()->numberBetween(40, 200),
-            'width' => fake()->numberBetween(40, 200),
-            'length' => fake()->numberBetween(40, 200),
-            'weight' => fake()->randomFloat(2, 0.1, 100),
+            'name'            => fake()->words(3, true),
+            'price'           => fake()->numberBetween(2000, 25000),
+            'height'          => fake()->numberBetween(200, 2000),
+            'width'           => fake()->numberBetween(300, 2000),
+            'length'          => fake()->numberBetween(300, 3000),
+            'weight'          => fake()->randomFloat(1, 2, 150),
+            'created_at'      => $createdAt,
+            'updated_at'      => $createdAt,
         ];
     }
 }
