@@ -96,6 +96,8 @@ class MaterialController extends Controller
     {
         $material->delete();
 
-        return redirect()->route('materials.index')->with('success', 'Material deleted successfully!');
+        return redirect()->route('materials.index')
+            ->with('success', 'Material deleted successfully!')
+            ->with('toast_type', 'deleted');
     }
 }

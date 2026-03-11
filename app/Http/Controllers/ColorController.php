@@ -98,6 +98,8 @@ class ColorController extends Controller
     {
         $color->delete();
 
-        return redirect()->route('colors.index')->with('success', 'Color deleted successfully!');
+        return redirect()->route('colors.index')
+            ->with('success', 'Color deleted successfully!')
+            ->with('toast_type', 'deleted');
     }
 }
