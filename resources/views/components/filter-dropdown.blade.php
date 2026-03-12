@@ -2,12 +2,14 @@
 
 @props([
     'name', 
-    'ariaLabel' => '', 
+    'ariaLabel' => '',
+    'ariaDescribedBy' => null,
     'options' => [], 
     'label' => null,           
     'prefix' => null,          {{-- Ensure this is null! --}}
     'defaultLabel' => 'All',
-    'selected' => null         
+    'selected' => null,
+    'required' => false,
 ])
 
 <div class="flex flex-col gap-2">
@@ -19,7 +21,9 @@
         <select 
             name="{{ $name }}"
             class="list-none appearance-none bg-gray-200 rounded-full py-2.5 pl-4 pr-12 text-gray-600 text-sm font-medium cursor-pointer w-full flex justify-between items-center focus:outline-none"
-            aria-label="{{ $ariaLabel }}">
+            aria-label="{{ $ariaLabel }}"
+            @if($ariaDescribedBy) aria-describedby="{{ $ariaDescribedBy }}" @endif
+            {{ $required ? 'required' : '' }}>
     
             <option value="">
                 {{ $prefix ? $prefix . ': ' : '' }}{{ $defaultLabel }}
