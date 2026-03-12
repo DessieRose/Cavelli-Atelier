@@ -12,13 +12,14 @@
 
 <div class="flex flex-col gap-2">
     @if($label)
-        <label class="font-bold text-gray-800 text-sm ml-4">{{ $label }}</label>
+        <label for="{{ $name }}-select" class="font-bold text-gray-800 text-sm ml-4">{{ $label }}</label>
     @endif
 
     <div class="relative w-full group">
-        <select 
+        <select
+            id="{{ $name }}-select"
             name="{{ $name }}"
-            class="list-none appearance-none bg-gray-200 rounded-full py-2.5 pl-4 pr-12 text-gray-600 text-sm font-medium cursor-pointer w-full flex justify-between items-center focus:outline-none"
+            class="list-none appearance-none bg-gray-200 rounded-full py-2.5 pl-4 pr-12 text-gray-600 text-sm font-medium cursor-pointer w-full flex justify-between items-center focus:outline-none focus:ring-2 focus:ring-brand"
             aria-label="{{ $ariaLabel }}">
     
             <option value="">
