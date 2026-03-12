@@ -27,17 +27,16 @@
         </x-form-section>
 
         {{-- SECTION: Product Details --}}
-        <x-form-section title="Product Details">
+        <x-form-section title="Dimentions and Weight">
             <div class="flex flex-col gap-5">
 
                 <fieldset>
-                    <legend class="form-label pb-2">Properties:</legend>
                     <div class="flex flex-wrap gap-2">
 
                         {{-- height width length --}}
                         @foreach (['height', 'width', 'length'] as $dim)
                         <div class="flex flex-col flex-1">
-                            <label class="text-sm text-gray-700 mb-1" for="{{ $dim }}">
+                            <label class="form-label" for="{{ $dim }}">
                                 {{ ucfirst($dim) }} (mm):
                             </label>
                             <input class="border border-gray-200 rounded-lg px-3 py-2 bg-gray-50 @error($dim) !border-red-600 @enderror"
@@ -50,32 +49,15 @@
 
                         {{-- weight --}}
                         <div class="flex flex-col flex-1">
-                            <label class="text-sm text-gray-700 mb-1" for="weight">Weight (kg):</label>
+                            <label class="form-label" for="weight">Weight (kg):</label>
                             <input class="border border-gray-200 rounded-lg px-3 py-2 bg-gray-50 @error('weight') !border-red-600 @enderror" type="number" id="weight" name="weight" min="0" max="999999.99" step="0.01" value="{{ old('weight', $product->weight ?? '') }}" placeholder="e.g. 12.5" aria-describedby="weight-error">
                             <x-input-error field="weight" />
                         </div>
                     </div>
                 </fieldset>
 
-                {{-- Materials multi-select --}}
-                <div class="flex flex-col gap-2">
-                    <x-checkbox-dropdown 
-                        label="Materials" 
-                        name="materials"
-                        :items="$materials->pluck('name', 'id')" 
-                        :selected="$editing ? $product->materials->pluck('id')->toArray() : []"
-                        {{-- placeholder="Select materials..."  --}}
-                    />
-
-                    {{-- Colors multi-select --}}
-                    <x-checkbox-dropdown 
-                        label="Colors" 
-                        name="colors"
-                        :items="$colors->pluck('name', 'id')" 
-                        :selected="$editing ? $product->colors->pluck('id')->toArray() : []" 
-                        placeholder="Select colors..."
-                    />
-                </div>
+                
+                
             </div>
         </x-form-section>
 
@@ -154,12 +136,30 @@
             </div>
         </x-form-section>
 
-        {{-- SECTION: Upload Images --}}
-        <x-form-section title="Upload Images">
-            <div>
-                <div>img placeholder</div>
-                <div>img placeholder</div>
-                <div>img placeholder</div>
+        {{-- Materials multi-select --}}
+        <x-form-section title="Attributes">
+            <div class="flex flex-col gap-2">
+                <div>
+                    <x-checkbox-dropdown 
+                        label="Materials" 
+                        name="materials"
+                        :items="$materials->pluck('name', 'id')" 
+                        :selected="$editing ? $product->materials->pluck('id')->toArray() : []"
+                        {{-- placeholder="Select materials..."  --}}
+                    />
+                </div>
+
+                {{-- Colors multi-select --}}
+                <div class="mt-4">
+                    <x-checkbox-dropdown 
+                        label="Colors" 
+                        name="colors"
+                        :items="$colors->pluck('name', 'id')" 
+                        :selected="$editing ? $product->colors->pluck('id')->toArray() : []" 
+                        placeholder="Select colors"
+                    />
+
+                </div>
             </div>
         </x-form-section>
 
