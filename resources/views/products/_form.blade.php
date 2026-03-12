@@ -11,7 +11,7 @@
 
                 {{-- product name --}}
                 <div>
-                    <label class="form-label" for="name">Product Name:</label>
+                    <label class="form-label" for="name">Product Name *</label>
                     <input class="input-field @error('name') !border-red-500 @enderror" type="text" id="name" name="name" required maxlength="255" placeholder="e.g. Milano Leather Sofa" value="{{ old('name', $product->name ?? '') }}" aria-describedby="name-error">
                     <x-input-error field="name" />
                 </div>
@@ -109,7 +109,7 @@
                     <x-input-error field="category_id" />
                 </div>
 
-                <div>
+                <div class="mt-4">
                     {{-- <label class="form-label" for="product_type_id">Product Sub-Category:</label>
                     <select class="@error('product_type_id') !border-red-500 @enderror" id="product_type_id" name="product_type_id" required aria-describedby="product_type_id-error">
                         <option value="">-- Select type --</option>
@@ -138,7 +138,7 @@
             <div class="flex gap-4">
 
                 <div class="flex-1">
-                    <label class="form-label" for="price">Price (kr)</label>
+                    <label class="form-label" for="price">Price (kr) *</label>
                     <input class="input-field @error('price') !border-red-500 @enderror" type="number" required id="price" name="price" step="0.01" min="0.01" max="99999999.99" placeholder="e.g. 4999" value="{{ old('price', $product->price ?? '') }}" aria-describedby="price-error">
                     <x-input-error field="price" />
                 </div>
