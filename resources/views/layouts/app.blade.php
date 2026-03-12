@@ -9,7 +9,7 @@
 </head>
 <body class="bg-gray-50 flex">
     {{-- Sidebar --}}
-    <div class="w-64 flex-shrink-0">
+    <div class="w-64 shrink-0 min-h-screen">
         @include('components.sidebar')
     </div>
     

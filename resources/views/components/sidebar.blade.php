@@ -1,6 +1,6 @@
 @props(['sidebar'])
 
-<aside class="sticky top-0 h-screen w-64 bg-[#a8c69f] p-5 lg:p-8 flex flex-col gap-6 lg:gap-10 overflow-y-auto" aria-label="Main navigation">
+<aside class="fixed top-0 left-0 h-screen min-h-screen w-64 bg-[#a8c69f] p-5 lg:p-8 flex flex-col gap-6 lg:gap-10 overflow-y-auto" aria-label="Main navigation">
     <div class="border-b border-gray-800/20 pb-4">
         <h1 class="text-xl lg:text-3xl font-serif tracking-tight text-gray-900 mt-4">
             Cavelli Atelier
