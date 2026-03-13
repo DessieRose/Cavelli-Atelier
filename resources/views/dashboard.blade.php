@@ -18,7 +18,7 @@
                 </div>
             </header>
             <section class="bg-gray-100 border border-gray-300 shadow-sm rounded-lg overflow-hidden h-180">
-                <img src="{{ asset('images/inside.jpg') }}" 
+                <img src="{{ asset('images/inside.webp') }}" 
                      alt="Overview Image" 
                      class="w-full h-full object-cover object-center">
             </section>
