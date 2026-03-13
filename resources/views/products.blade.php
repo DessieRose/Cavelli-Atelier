@@ -127,7 +127,20 @@
             @endforelse
 
             <nav aria-label="Pagination" class="mt-8 p-4 bg-white rounded-xl shadow-sm border border-gray-200">
-                {{ $products->links() }}
+                @if ($products->hasPages())
+
+                    {{-- Standard Laravel Pagination --}}
+                    {{ $products->appends(request()->query())->links() }}
+                @elseif ($products->count() > 0)
+
+                    {{-- Premium "Single Page" View for consistency --}}
+                    <div class="flex items-center justify-between text-sm text-gray-600 font-medium">
+                        <span>Showing {{ $products->count() }} results</span>
+                        <span class="px-4 py-2 bg-gray-100 rounded-lg border border-gray-200 text-gray-600 cursor-default">
+                            Page 1 of 1
+                        </span>
+                    </div>
+                @endif
             </nav>
         </div>
     </main>
