@@ -24,7 +24,7 @@
         <div class="flex flex-wrap items-start gap-x-8 gap-y-2 mb-4 pb-4 border-b border-gray-300">
             <div>
                 <p class="uppercase-text">Product Name</p>
-                <h2 class="product-text-medium">{{ $product->name }}</h2>
+                <h2 class="product-text-medium">{{ Str::limit($product->name, 30, $end='...') }}</h2>
             </div>
             <div>
                 <p class="uppercase-text">Price</p>
@@ -79,7 +79,7 @@
                 </div>
                 <div>
                     <p class="uppercase-text">Description</p>
-                    <p class="product-text-small">{{ Str::limit($product->description, 180) }}</p>
+                    <p class="product-text-small">{{ Str::limit($product->description, 60, $end='...') }}</p>
                 </div>
             </div>
 
