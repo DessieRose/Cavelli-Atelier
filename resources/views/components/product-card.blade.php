@@ -24,11 +24,13 @@
         <div class="flex flex-wrap items-start gap-x-8 gap-y-2 mb-4 pb-4 border-b border-gray-300">
             <div>
                 <p class="uppercase-text">Product Name</p>
-                <h2 class="product-text-medium">{{ $product->name }}</h2>
+                <h2 class="product-text-medium">{{ Str::limit($product->name, 30, $end='...') }}</h2>
             </div>
             <div>
                 <p class="uppercase-text">Price</p>
-                <p class="product-text-medium">{{ number_format($product->price) }} kr</p>
+                <p class="product-text-medium">{{ rtrim(rtrim(number_format($product->price, 2, '.', ' '), '0'), '.')
+
+ }} kr</p>
             </div>
             <div>
                 <p class="uppercase-text">Product ID</p>
@@ -77,7 +79,7 @@
                 </div>
                 <div>
                     <p class="uppercase-text">Description</p>
-                    <p class="product-text-small">{{ Str::limit($product->description, 180) }}</p>
+                    <p class="product-text-small">{{ Str::limit($product->description, 60, $end='...') }}</p>
                 </div>
             </div>
 
@@ -97,8 +99,8 @@
             <i class="fa fa-edit text-2xl lg:text-3xl" aria-hidden="true"></i>
         </a>
         @if ($editMode)
-            <button onclick="document.getElementById('confirm-delete-modal').showModal()"
-                    type="submit" class="text-gray-400 hover:text-red-600 transition-colors cursor-pointer text-center"
+            <button onclick="document.getElementById('confirm-delete-modal-{{ $product->id }}').showModal()"
+                    type="button" class="text-gray-400 hover:text-red-600 transition-colors cursor-pointer text-center"
                     aria-label="Delete product: {{ $product->name }}">
                 <p class="uppercase-text">Delete</p>
                 <i class="fa fa-trash text-2xl lg:text-3xl" aria-hidden="true"></i>
@@ -107,6 +109,7 @@
                 item="{{ $product->name }}"
                 table="products"
                 action="{{ route('products.destroy', $product) }}"
+                modalId="confirm-delete-modal-{{ $product->id }}"
             />
         @endif
     </div>

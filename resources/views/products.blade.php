@@ -12,9 +12,18 @@
 
         <div class="bg-gray-100 border border-gray-300 shadow-sm rounded-2xl p-6 lg:p-10 m-4 lg:m-10 mb-px">
             <form method="GET" action="{{ route('products.index') }}" aria-label="Filter products">
-                <h1 class="intro-h1">
-                    {{ $editMode ? 'Edit' : 'Products' }}
-                </h1>
+                <div class="flex flex-wrap justify-between items-center mb-6 gap-4">
+                    <h1 class="intro-h1">
+                        {{ $editMode ? 'Edit' : 'Products' }}
+                    </h1>
+                        <a href="{{ route('products.create') }}"
+                        aria-label="Add a new product"
+                        class="btn-primary">
+                        <span class="text-xl leading-none">+</span> Add new product
+                    </a>
+                </div>
+
+                <hr class="border-gray-300 -mx-6 mb-6" aria-hidden="true">
 
                 {{-- Top bar: search, status, sort, add button --}}
                 <div class="flex flex-wrap items-center gap-3 lg:gap-4 mb-6">
@@ -35,9 +44,10 @@
                             {{ $message }}
                         </p>
                         @enderror
+
                     </div>
 
-                    {{-- <x-filter-dropdown 
+                    <!-- <x-filter-dropdown 
                         name="status"
                         ariaLabel="Filter products by status"
                         defaultLabel="Show: All products"
@@ -45,8 +55,8 @@
                             'active' => 'Show: Active only',
                             'inactive' => 'Show: Inactive only',
                             
-                        ]" 
-                    /> --}}
+                        ]" /> -->
+
 
                     <x-filter-dropdown 
                         name="sort"
@@ -58,18 +68,12 @@
                         ]" 
                     />
 
-
-                    <a href="{{ route('products.create') }}"
-                        aria-label="Add a new product"
-                        class="btn-primary">
-                        <span class="text-xl leading-none">+</span> Add new product
-                    </a>
                 </div>
 
-                <hr class="border-gray-300 -mx-6 mb-6" aria-hidden="true">
+                
 
                 {{-- Filter row: wraps to new lines at 200% zoom --}}
-                <div class="flex flex-wrap gap-4 lg:gap-6 items-end" aria-label="Additional product filters: type, price, material">
+                <div class="flex flex-wrap gap-4 lg:gap-6 items-end mt-5" aria-label="Additional product filters: type, price, material">
                   
                     <x-filter-dropdown 
                         name="type"
@@ -79,7 +83,6 @@
                         prefix="Show"
                         :options="$types->pluck('name', 'id')" 
                     />
-
 
                     <x-filter-dropdown 
                         name="price"
@@ -93,23 +96,6 @@
                         ]" 
                     />
 
-                    {{-- <div class="flex flex-col gap-2">
-                        <label class="font-bold text-gray-800 text-sm ml-4">Material</label>
-                        <div class="relative">
-                            <select name="material" class="appearance-none bg-gray-200 rounded-full py-2.5 pl-4 pr-12 text-gray-600 text-sm font-medium cursor-pointer"
-                            aria-label="Filter products by material">
-                                <option value="">Show by: All</option>
-                                @foreach ($materials as $material)
-                                    <option value="{{ $material->id }}" {{ request('material') == $material->id ? 'selected' : '' }}>
-                                        Show by: {{ $material->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-700">
-                                <i class="fa fa-chevron-down text-sm"></i>
-                            </div>
-                        </div>
-                    </div> --}}
                     <x-filter-dropdown 
                         name="material"
                         label="Material"
@@ -141,7 +127,20 @@
             @endforelse
 
             <nav aria-label="Pagination" class="mt-8 p-4 bg-white rounded-xl shadow-sm border border-gray-200">
-                {{ $products->links() }}
+                @if ($products->hasPages())
+
+                    {{-- Standard Laravel Pagination --}}
+                    {{ $products->appends(request()->query())->links() }}
+                @elseif ($products->count() > 0)
+
+                    {{-- Premium "Single Page" View for consistency --}}
+                    <div class="flex items-center justify-between text-sm text-gray-600 font-medium">
+                        <span>Showing {{ $products->count() }} results</span>
+                        <span class="px-4 py-2 bg-gray-100 rounded-lg border border-gray-200 text-gray-600 cursor-default">
+                            Page 1 of 1
+                        </span>
+                    </div>
+                @endif
             </nav>
         </div>
     </main>
