@@ -15,12 +15,7 @@
             <form method="GET" action="{{ route('materials.index') }}" aria-label="Filter materials">
                 <div class="flex justify-between items-center mb-6">
                     <h1 class="intro-h1">Materials</h1>
-                    <a href="" aria-label="Add a new material" class="btn-primary">
-                        <span class="text-xl leading-none">+</span> Add new material
-                    </a>
                 </div>
-
-                <hr class="border-gray-300 -mx-6 mb-6" aria-hidden="true">
 
                 <div class="flex flex-wrap items-center gap-3 lg:gap-4 mb-6">
                     <div class="relative grow min-w-40">
@@ -40,21 +35,6 @@
                             </p>
                         @enderror
                     </div>
-
-                    {{-- <div class="relative inline-block shrink-0">
-                        <select name="sort" class="appearance-none bg-gray-200 rounded-full py-2.5 pl-6 pr-12 text-gray-600 text-sm font-medium cursor-pointer focus:ring-2 focus:ring-brand"
-                            aria-label="Sort materials by name">
-                            <option value="name_asc"  {{ request('sort') == 'name_asc'  ? 'selected' : '' }}>Name: A-Z</option>
-                            <option value="name_desc" {{ request('sort') == 'name_desc' ? 'selected' : '' }}>Name: Z-A</option>
-                        </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-700">
-                            <i class="fa fa-chevron-down text-sm" aria-hidden="true"></i>
-                        </div>
-                    </div>
-
-                    <button type="submit" aria-label="Apply filters" class="btn-primary">
-                        Apply Filters
-                    </button> --}}
 
                     <a href="{{ route('materials.index') }}" aria-label="Reset filters"
                         class="shrink-0 text-sm text-gray-500 hover:text-gray-700 underline self-center">

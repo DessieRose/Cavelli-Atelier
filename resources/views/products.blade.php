@@ -80,7 +80,6 @@
                         :options="$types->pluck('name', 'id')" 
                     />
 
-
                     <x-filter-dropdown 
                         name="price"
                         label="Price"
@@ -93,23 +92,6 @@
                         ]" 
                     />
 
-                    {{-- <div class="flex flex-col gap-2">
-                        <label class="font-bold text-gray-800 text-sm ml-4">Material</label>
-                        <div class="relative">
-                            <select name="material" class="appearance-none bg-gray-200 rounded-full py-2.5 pl-4 pr-12 text-gray-600 text-sm font-medium cursor-pointer"
-                            aria-label="Filter products by material">
-                                <option value="">Show by: All</option>
-                                @foreach ($materials as $material)
-                                    <option value="{{ $material->id }}" {{ request('material') == $material->id ? 'selected' : '' }}>
-                                        Show by: {{ $material->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-700">
-                                <i class="fa fa-chevron-down text-sm"></i>
-                            </div>
-                        </div>
-                    </div> --}}
                     <x-filter-dropdown 
                         name="material"
                         label="Material"
