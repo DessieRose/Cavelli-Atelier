@@ -139,3 +139,5 @@ class ProductController extends Controller
         return redirect()->route('products.edit-mode')->with('success', 'Product deleted!')->with('toast_type', 'deleted');
     }
 }
+
+//Codereview
